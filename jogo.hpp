@@ -64,6 +64,8 @@
         
     };
     int jogo_da_veia(){
-
+        Tabuleiro tabuleiro;
+        while(tabuleiro.verifica_vencedor() && !tabuleiro.eh_velha()){
+            
     }
 # endif
