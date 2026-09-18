@@ -1,5 +1,6 @@
 # include <iostream>
 # include <stdio.h>
+using namespace std;
 # ifndef JOGO_HPP
 # define JOGO_HPP
 
@@ -65,7 +66,42 @@
     };
     int jogo_da_veia(){
         Tabuleiro tabuleiro;
-        while(tabuleiro.verifica_vencedor() && !tabuleiro.eh_velha()){
-            
+        int x, y;
+        char q;
+        while(true){
+            tabuleiro.imprime_tabuleiro();
+            cout << "Que posicao vc deseja joagar[x][y] (vez de x)";
+            cin >> x >> y;
+            while(!tabuleiro.insere_jogada(x, y, 'x')){
+                cout << "Opção invalida poe um x e um y valido cabecao"<<endl;
+            }
+            tabuleiro.imprime_tabuleiro();
+            if(tabuleiro.eh_velha() || tabuleiro.verifica_vencedor()){
+                cout << "x venceu, deseja jogar novamente? (s/n) ";
+                cin >> q;
+                while(q != 's' || q != 'n'){
+                    cout << "Poe uma opcao valida cabecao ";
+                    cin >> q;
+                }
+                if(q == 's') tabuleiro.limpa_tabuleiro();
+                else break;
+            }
+            cout << "Que posicao vc deseja joagar[x][y] (vez de o)";
+            cin >> x >> y;
+            while(!tabuleiro.insere_jogada(x, y, 'o')){
+                cout << "Opção invalida poe um x e um y valido cabecao"<<endl;
+            }
+            tabuleiro.imprime_tabuleiro();
+            if(tabuleiro.eh_velha() || tabuleiro.verifica_vencedor()){
+                cout << "x venceu, deseja jogar novamente? (s/n) ";
+                cin >> q;
+                while(q != 's' || q != 'n'){
+                    cout << "Poe uma opcao valida cabecao ";
+                    cin >> q;
+                }
+                if(q == 's') tabuleiro.limpa_tabuleiro();
+                else break;
+        }
+    }
     }
 # endif
