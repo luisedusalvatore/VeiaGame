@@ -67,7 +67,7 @@ using namespace std;
     int jogada(Tabuleiro *tabuleiro, char jogador){
         int x, y;
         char q;
-        cout << "Que posicao vc deseja joagar[x][y] (vez de "<<jogador<<")";
+        cout << "Que posicao vc deseja jogar[x][y] (vez de "<<jogador<<")";
         cin >> x >> y;
         while(!tabuleiro->insere_jogada(x, y, jogador)){
             tabuleiro->imprime_tabuleiro();
@@ -76,7 +76,8 @@ using namespace std;
         }
         tabuleiro->imprime_tabuleiro();
         if(tabuleiro->eh_velha() || tabuleiro->verifica_vencedor()){
-            cout << jogador <<" venceu, deseja jogar novamente? (s/n) ";
+            if(tabuleiro->verifica_vencedor())cout << jogador <<" venceu, deseja jogar novamente? (s/n) ";
+            else cout << "Houve empate :( deseja jogar novamente? (s/n) ";
             cin >> q;
             while(q != 's' && q != 'n'){
 
