@@ -86,6 +86,7 @@ using namespace std;
             if(q == 's'){ 
                 tabuleiro->limpa_tabuleiro();
                 tabuleiro->imprime_tabuleiro();
+                return 2;
             }
             else return 0;
         }
@@ -101,7 +102,7 @@ using namespace std;
         while(verifiq){
             i = i%2;
             verifiq = jogada(&tabuleiro, q[i]);
-            i++;
+            if(verifiq == 1) i++;
     }
     }
 # endif
