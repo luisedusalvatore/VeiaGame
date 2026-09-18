@@ -1,4 +1,5 @@
 # include <iostream>
+#include <cstdlib>
 # include <stdio.h>
 using namespace std;
 # ifndef JOGO_HPP
@@ -70,11 +71,15 @@ using namespace std;
         cout << "Que posicao vc deseja jogar[x][y] (vez de "<<jogador<<")";
         cin >> x >> y;
         while(!tabuleiro->insere_jogada(x, y, jogador)){
+            system("clear");
             tabuleiro->imprime_tabuleiro();
             cout << "Opção invalida poe um x e um y valido cabecao ";
             cin >> x >> y;
         }
+
+        system("clear");
         tabuleiro->imprime_tabuleiro();
+        
         if(tabuleiro->eh_velha() || tabuleiro->verifica_vencedor()){
             if(tabuleiro->verifica_vencedor())cout << jogador <<" venceu, deseja jogar novamente? (s/n) ";
             else cout << "Houve empate :( deseja jogar novamente? (s/n) ";
@@ -85,6 +90,7 @@ using namespace std;
                 cin >> q;
             }
             if(q == 's'){ 
+                system("clear");
                 tabuleiro->limpa_tabuleiro();
                 tabuleiro->imprime_tabuleiro();
                 return 2;
