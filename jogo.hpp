@@ -11,22 +11,23 @@ using namespace std;
     }
     class Tabuleiro {
         private : 
+        
+        public :
+            
             char tabuleiro[3][3] = {
                 {' ',' ',' '},
                 {' ',' ',' '},
                 {' ',' ',' '}
             };
             int verifica_jogada(int x, int y){
-                if(x > 3 || x < 1) return 0;
-                if(y > 3 || y < 1) return 0;
-                if(tabuleiro[x-1][y-1] != ' ') return 0;
+                if(x > 2 || x < 0) return 0;
+                if(y > 2 || y < 0) return 0;
+                if(tabuleiro[x][y] != ' ') return 0;
                 return 1;
             }
-        public :
-            
             int insere_jogada(int x, int y, char c){
                 if(verifica_jogada(x, y)){
-                    tabuleiro[x-1][y-1] = c;
+                    tabuleiro[x][y] = c;
                     return 1;
                 }
                 return 0;
@@ -63,6 +64,7 @@ using namespace std;
                     }
                 }
             }
+   
         
     };
     int jogada(Tabuleiro *tabuleiro, char jogador){
